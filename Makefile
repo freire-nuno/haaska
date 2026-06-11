@@ -25,6 +25,16 @@ haaska.zip: haaska.py config/*
 	chmod 755 $(BUILD_DIR)/haaska.py
 	cd $(BUILD_DIR); zip ../$@ -r *
 
+.PHONY: haaska-ssh
+haaska-ssh: haaska.py config/*
+	mkdir -p $(BUILD_DIR)
+	cp $^ $(BUILD_DIR)
+	pip$(PIP_VER) install $(PIP_EXTRA) -t $(BUILD_DIR) requests sshtunnel paramiko boto3
+	chmod 755 $(BUILD_DIR)/haaska.py
+	if [ -e config/ssh.key ]; then cp config/ssh.key $(BUILD_DIR)/ssh.key && chmod 600 $(BUILD_DIR)/ssh.key; fi
+	cd $(BUILD_DIR); zip ../haaska.zip -r .
+	@echo "haaska.zip built with SSH tunnel support"
+
 .PHONY: deploy
 deploy: haaska.zip
 	aws lambda update-function-configuration \

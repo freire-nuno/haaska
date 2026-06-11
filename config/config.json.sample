@@ -1,7 +1,15 @@
 {
-  "url": "http://localhost:8123/api",
+  "url": "https://localhost:8123",
   "bearer_token": "",
+  "ssl_verify": false,
+  "ssl_client": [],
   "debug": false,
-  "ssl_verify": true,
-  "ssl_client": []
+  "ssh_enabled": true,
+  "ssh_username": "homeassistant",
+  "ssh_remote_host_public_url": "your-public-ip-or-domain",
+  "ssh_remote_host_public_port": 22,
+  "ssh_remote_host_private_url": "0.0.0.0",
+  "ssh_remote_host_private_port": 8123,
+  "ssh_local_host_port": 8123,
+  "ssh_key_is_encrypted": false
 }
