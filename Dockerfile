@@ -1,6 +1,6 @@
 FROM amazonlinux:2023
 
-RUN dnf install -y python3.12 python3.12-pip jq zip && dnf clean all
+RUN dnf install -y python3.12 python3.12-pip jq zip make && dnf clean all
 
 RUN pip3.12 install awscli
 
