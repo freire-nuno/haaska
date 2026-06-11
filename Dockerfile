@@ -1,12 +1,8 @@
-FROM python:3.14
+FROM public.ecr.aws/lambda/python:3.12
 
-RUN \
-  apt-get update && \
-  apt-get install -y jq zip && \
-  pip install awscli && \
-  apt-get clean && \
-  cd /var/lib/apt/lists && rm -fr *Release* *Sources* *Packages* && \
-  truncate -s 0 /var/log/*log
+RUN yum install -y jq zip && yum clean all
+
+RUN pip install awscli
 
 RUN mkdir -p /usr/src/app
 
