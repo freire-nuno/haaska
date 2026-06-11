@@ -1,8 +1,8 @@
-FROM public.ecr.aws/lambda/python:3.12
+FROM amazonlinux:2023
 
-RUN yum install -y jq zip && yum clean all
+RUN dnf install -y python3.12 python3.12-pip jq zip && dnf clean all
 
-RUN pip install awscli
+RUN pip3.12 install awscli
 
 RUN mkdir -p /usr/src/app
 
