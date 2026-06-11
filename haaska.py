@@ -145,7 +145,7 @@ def event_handler(event, context):
             ssh_pkey="./ssh.key",
             ssh_private_key_password=(get_decrypted_ssh_key_pass()
                                       if config.ssh_key_is_encrypted
-                                      else os.environ.get('ssh_key_pass', '')),
+                                      else None),
             remote_bind_address=(config.ssh_remote_host_private_url,
                                  config.ssh_remote_host_private_port),
             local_bind_address=('0.0.0.0', config.ssh_local_host_port)
